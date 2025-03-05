@@ -3,6 +3,7 @@ export default class HomePage {
     return `
       <section class="container">
         <h1>Home Page</h1>
+        <div>selow</div>
       </section>
     `;
   }
