@@ -2,9 +2,11 @@ import NewPresenter from './new-presenter';
 import { convertBase64ToBlob } from '../../utils';
 import * as CityCareAPI from '../../data/api';
 import { generateLoaderAbsoluteTemplate } from '../../templates';
-
+import Camera from '../../utils/camera';
 export default class NewPage {
   #presenter;
+  #camera;
+
   #form;
   #isCameraOpen = false;
   #takenDocumentations = [];
@@ -96,7 +98,25 @@ export default class NewPage {
                   </button>
                 </div>
                 <div id="camera-container" class="new-form__camera__container">
-                  <p>Fitur ambil gambar dengan kamera akan segera hadir!</p>
+              
+               <video id="camera-video" class="new-form__camera__video">video stream not available</video>
+               
+                <canvas id="camera-canvas" class="new-form__camera__canvas"></canvas>
+
+
+
+<div class="new-form__camera__tools">
+                  <select id="camera-select"></select>
+            
+<div class="new-form__camera__tools_buttons">
+                    <button id="camera-take-button" class="btn" type="button">
+                      Ambil Gambar
+                    </button>
+                  </div>
+
+
+                  </div>
+
                 </div>
                 <ul id="documentations-taken-list" class="new-form__documentations__outputs"></ul>
               </div>
@@ -176,11 +196,16 @@ export default class NewPage {
         this.#isCameraOpen = cameraContainer.classList.contains('open');
         if (this.#isCameraOpen) {
           event.currentTarget.textContent = 'Tutup Kamera';
+          this.#setupCamera();
+          this.#camera.launch();
 
           return;
         }
 
         event.currentTarget.textContent = 'Buka Kamera';
+
+        // perintah untuk menutup stream camera
+        this.#camera.stop();
       });
   }
 
@@ -190,6 +215,20 @@ export default class NewPage {
 
   #setupCamera() {
     // TODO: camera initialization
+    if (this.#camera) {
+      return;
+    }
+    this.#camera = new Camera({
+      video: document.getElementById('camera-video'),
+      cameraSelect: document.getElementById('camera-select'),
+      canvas: document.getElementById('camera-canvas'),
+    });
+
+    this.#camera.addCheeseButtonListener('#camera-take-button', async () => {
+      const image = await this.#camera.takePicture();
+      await this.#addTakenPicture(image);
+      await this.#populateTakenPictures();
+    });
   }
 
   async #addTakenPicture(image) {

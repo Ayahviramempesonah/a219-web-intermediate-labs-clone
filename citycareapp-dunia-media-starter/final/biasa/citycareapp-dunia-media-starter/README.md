@@ -5,6 +5,7 @@
 Starter project ini dirancang sebagai bahan pelajaran siswa di kelas [Belajar Pengembangan Web Intermediate](https://www.dicoding.com/academies/219).
 
 ## Deskripsi
+
 CityCareApp adalah aplikasi pelaporan kerusakan fasilitas umum yang memungkinkan warga Indonesia melaporkan masalah secara langsung kepada pemerintah kota. Dengan aplikasi ini, komunikasi antara warga dan pemerintah menjadi lebih efisien dalam menangani dan menindaklanjuti laporan kerusakan fasilitas umum.
 
 ## Prasyarat
@@ -16,11 +17,13 @@ CityCareApp adalah aplikasi pelaporan kerusakan fasilitas umum yang memungkinkan
 
 - Unduh starter project [citycareapp-starter-project.zip](https://raw.githubusercontent.com/dicodingacademy/a219-web-intermediate-labs/099-shared-files/citycareapp-starter-project.zip).
 - Unzip berkas ZIP yang telah diunduh. Bisa pakai perintah berikut untuk Linux:
+
   ```bash
   unzip ./citycareapp-starter-project.zip
   ```
 
 - Masuk ke direktori proyek:
+
   ```bash
   cd citycareapp-starter-project
   ```
