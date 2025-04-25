@@ -1,5 +1,5 @@
 export default class PresenterLogin {
-    #view;
+  #view;
   #model;
   #authModel;
 
@@ -10,9 +10,10 @@ export default class PresenterLogin {
   }
 
   async getLogin({ email, password }) {
-    this.#view.showSubmitLoadingButton();
+    // this.#view.showSubmitLoadingButton();
     try {
       const response = await this.#model.getLogin({ email, password });
+      console.log(response);
 
       if (!response.ok) {
         console.error('getLogin: response:', response);
@@ -27,7 +28,7 @@ export default class PresenterLogin {
       console.error('getLogin: error:', error);
       this.#view.loginFailed(error.message);
     } finally {
-      this.#view.hideSubmitLoadingButton();
+      //   this.#view.hideSubmitLoadingButton();
     }
   }
 }

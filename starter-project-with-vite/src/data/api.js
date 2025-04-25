@@ -3,8 +3,7 @@
 
 // import CONFIG from "../scripts/config";
 
-import { BASE_URL } from "../scripts/config";
-
+import { BASE_URL } from '../scripts/config';
 
 const ENDPOINTS = {
   // Auth

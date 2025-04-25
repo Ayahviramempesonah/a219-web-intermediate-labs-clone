@@ -1,11 +1,11 @@
-import PresenterRegister from "./presenter-register";
-import * as StoryApi from '../../../data/api'
+import PresenterRegister from './presenter-register';
+import * as StoryApi from '../../../data/api';
 
 export class RegisterPages {
-  #presenter = null
+  #presenter = null;
 
-    async render() {
-        return `
+  async render() {
+    return `
           <section class="register-container">
             <div class="register-form-container">
               <h1 class="register__title">Daftar akun</h1>
@@ -42,7 +42,7 @@ export class RegisterPages {
             </div>
           </section>
         `;
-}
+  }
 
   async afterRender() {
     this.#presenter = new PresenterRegister({
@@ -90,6 +90,4 @@ export class RegisterPages {
       <button class="btn" type="submit">Daftar akun</button>
     `;
   }
-
-
 }
