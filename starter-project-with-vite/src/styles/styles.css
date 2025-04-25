@@ -2,30 +2,56 @@
 
 @font-face {
   font-family: 'DMSerifText-Italic';
-  src: url(../public/fonts/DMSerifText-Italic.ttf) format("truetype");
+  src: url(../public/fonts/DMSerifText-Italic.ttf) format('truetype');
   font-weight: normal;
 }
 
 @font-face {
   font-family: 'DMSerifText-Regular';
-  src: url(../public/fonts/DMSerifText-Regular.ttf) format("truetype");
+  src: url(../public/fonts/DMSerifText-Regular.ttf) format('truetype');
   font-weight: normal;
 }
 
-
-
-
 body {
-  font-family: 'DMSerifText-Regular',sans-serif;
+  font-family: 'DMSerifText-Regular', sans-serif;
 }
 
+/* LOGIN, REGISTER PAGE */
+.register-form-container,
+.login-form-container {
+  max-width: 400px;
+  height: 100%;
+  margin-inline: auto;
+}
+
+.register__title,
+.login__title {
+  text-align: center;
+  margin-block: 30px 20px;
+}
+
+.register-form,
+.login-form {
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.register-form__form-buttons,
+.login-form__form-buttons {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.register-form__already-have-account,
+.login-form__do-not-have-account {
+  text-align: center;
+}
 * {
   margin: 0;
   padding: 0;
 
   box-sizing: border-box;
 }
-
 
 .container {
   padding-inline: 32px;
@@ -102,7 +128,7 @@ header {
   padding: 6px 10px;
 
   display: block;
-  
+
   color: #333;
   text-decoration: none;
 }
