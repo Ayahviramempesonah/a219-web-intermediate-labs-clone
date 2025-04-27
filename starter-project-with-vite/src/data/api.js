@@ -1,9 +1,6 @@
-// import { getAccessToken } from '../utils/auth';
-// import { BASE_URL } from '../config';
 
-// import CONFIG from "../scripts/config";
 
-import { BASE_URL } from '../scripts/config';
+import { BASE_URL,ACCESS_TOKEN_KEY } from '../scripts/config';
 
 const ENDPOINTS = {
   // Auth

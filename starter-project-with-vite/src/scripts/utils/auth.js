@@ -1,5 +1,8 @@
-import { ACCESS_TOKEN_KEY } from '../scripts/config';
-import { getActiveRoute } from '../scripts/routes/url-parser';
+// 
+
+import { BASE_URL,ACCESS_TOKEN_KEY } from "../config";
+
+
 
 export function getAccessToken() {
   try {

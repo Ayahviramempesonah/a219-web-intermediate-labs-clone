@@ -19,6 +19,7 @@ let cats = [
 const CatsLocal = {
   async getAllCats() {
     // TODO: Implementation
+    return [...cats]
   },
 
   async getCatById(id) {

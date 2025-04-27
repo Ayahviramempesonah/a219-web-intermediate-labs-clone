@@ -1,13 +1,17 @@
 import HomePage from '../pages/home/home-page';
 import AboutPage from '../pages/about/about-page';
 import LoginPage from '../pages/auth/login/login-pages';
-import RegisterPage from '../../../../citycareapp-dunia-media-starter/final/biasa/citycareapp-dunia-media-starter/src/scripts/pages/auth/register/register-page';
+// import { RegisterPages } from '../pages/auth/register/register-pages';
+import * as AUTH from '../utils/auth'
+import * as Api from '../../data/api'
+import {checkUnauthenticatedRouteOnly} from '../utils/auth'
+import RegisterPage from '../pages/auth/register/register-pages';
 
 const routes = {
-  '/': new HomePage(),
+  '/': () => checkUnauthenticatedRouteOnly(new HomePage()),
   '/about': new AboutPage(),
   '/login': new LoginPage(),
-  '/register': new RegisterPage(),
+   '/register': new RegisterPage(),
 };
 
 export default routes;
