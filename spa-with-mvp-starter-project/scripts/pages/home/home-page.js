@@ -14,7 +14,7 @@ export default class HomePage{
        <p>ini adalah konten utama</p>
        <div id="cats"></div>
        <p>mari kita cek <a href='#/about' ></a> halaman about </p>
-        `
+        `;
     }
 
     async afterRender(){
@@ -29,9 +29,10 @@ export default class HomePage{
 
 showCats(cats){
 const html = cats.reduce(
-    (accumulator,currentValue) => accumulator.concat(TEMPLATE.generateCatItemTemplate(currentValue)),''
+    (accumulator,currentValue) => accumulator.concat(generateCatItemTemplate(currentValue)),''
 )
-document.getElementById('cats').innerHTML =`<ul class="cats-list"></ul>`
+document.getElementById('cats').innerHTML =`<ul class="cats-list">${html}</ul>`;
+console.log('data gambar',html)
 
 }
 

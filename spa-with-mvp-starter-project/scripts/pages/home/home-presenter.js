@@ -1,4 +1,4 @@
-import CatsLocal from '../../data/local'
+// import CatsLocal from '../../data/local.js'
 
 
 export default class HomePresenter{
@@ -8,6 +8,7 @@ export default class HomePresenter{
     constructor({model,view}){
         this.#model=model;
         this.#view=view;
+        // await this.
     }
 async showCats(){
     const cats =await this.#model.getAllCats()
