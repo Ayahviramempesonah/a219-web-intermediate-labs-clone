@@ -3,6 +3,7 @@ import { convertBase64ToBlob } from '../../utils';
 import * as CityCareAPI from '../../data/api';
 import { generateLoaderAbsoluteTemplate } from '../../templates';
 import Camera from '../../utils/camera';
+import Map from '../../utils/map';
 
 export default class NewPage {
   #presenter;
@@ -10,6 +11,8 @@ export default class NewPage {
   #camera;
   #isCameraOpen = false;
   #takenDocumentations = [];
+  #updateLatLngInput
+  #map=null
 
   async render() {
     return `
@@ -135,8 +138,8 @@ export default class NewPage {
                   <div id="map-loading-container"></div>
                 </div>
                 <div class="new-form__location__lat-lng">
-                  <input type="number" name="latitude" value="-6.175389">
-                  <input type="number" name="longitude" value="106.827139">
+                  <input type="number" name="latitude" value="-6.175389" disabled>
+                  <input type="number" name="longitude" value="106.827139" disabled>
                 </div>
               </div>
             </div>
@@ -213,9 +216,33 @@ export default class NewPage {
   }
 
   async initialMap() {
-    // TODO: map initialization
-  }
-
+      this.#map = await Map.build('#map', {
+        zoom: 15,
+        locate: true,
+      });
+  
+      // Preparing marker for select coordinate
+      const centerCoordinate = this.#map.getCenter();
+  
+       this.#updateLatLngInput(centerCoordinate.latitude, centerCoordinate.longitude);
+  
+      const draggableMarker = this.#map.addMarker(
+        [centerCoordinate.latitude, centerCoordinate.longitude],
+        { draggable: 'true' },
+      );
+  
+      draggableMarker.addEventListener('move', (event) => {
+        const coordinate = event.target.getLatLng();
+         this.#updateLatLngInput(coordinate.lat, coordinate.lng);
+      });
+  
+      this.#map.addMapEventListener('click', (event) => {
+        draggableMarker.setLatLng(event.latlng);
+  
+        // Keep center
+        event.sourceTarget.flyTo(event.latlng);
+      });
+    }
   #setupCamera() {
     if (!this.#camera) {
       this.#camera = new Camera({

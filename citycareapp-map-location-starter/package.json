@@ -4,10 +4,10 @@
   "description": "Aplikasi pelaporan kerusakan fasilitas umum yang memungkinkan warga Indonesia melaporkan masalah secara langsung kepada pemerintah kota. Dengan aplikasi ini, komunikasi antara warga dan pemerintah menjadi lebih efisien dalam menangani dan menindaklanjuti laporan kerusakan fasilitas umum.",
   "scripts": {
     "build": "webpack --config ./webpack.prod.js",
-    "start-dev": "webpack serve  --open --config ./webpack.dev.js",
+    "dev": "webpack serve  --open --config ./webpack.dev.js ",
     "serve": "http-server ./dist --port 3000",
-    "prettier": "prettier . --check",
-    "prettier:write": "prettier . --write"
+    "format-check": "prettier . --check",
+    "format": "prettier . --write"
   },
   "keywords": [],
   "author": "Your Name <your_email>",
@@ -29,6 +29,7 @@
     "webpack-merge": "^6.0.1"
   },
   "dependencies": {
+    "leaflet": "^1.9.4",
     "tiny-slider": "^2.9.4"
   }
 }
