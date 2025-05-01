@@ -11,7 +11,7 @@ export default class NewPage {
   #camera;
   #isCameraOpen = false;
   #takenDocumentations = [];
-  #updateLatLngInput
+  // #updateLatLngInput
   #map=null
 
   async render() {
@@ -242,7 +242,16 @@ export default class NewPage {
         // Keep center
         event.sourceTarget.flyTo(event.latlng);
       });
+
+    
     }
+    #updateLatLngInput(latitude, longitude,) {
+      this.#form.elements.namedItem('latitude').value = latitude;
+      this.#form.elements.namedItem('longitude').value = longitude;
+    }
+
+
+
   #setupCamera() {
     if (!this.#camera) {
       this.#camera = new Camera({
