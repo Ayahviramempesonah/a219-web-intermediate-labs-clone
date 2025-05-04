@@ -1,0 +1,62 @@
+@media screen and (width > 600px) {
+  form .form-buttons {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .register-container {
+    padding: 15px;
+  }
+
+  .register__title {
+    font-size: 20px;
+  }
+
+  .btn {
+    font-size: 14px;
+  }
+
+  .login-container {
+    padding: 15px;
+  }
+
+  .login__title {
+    font-size: 20px;
+  }
+
+  .btn {
+    font-size: 14px;
+  }
+
+  /* login and register */
+
+  .register-form,
+  .login-form {
+    border: 1px solid #d4d4d4;
+  }
+}
+
+@media screen and (width > 800px) {
+  /* MAIN */
+  .footer-content {
+    justify-content: space-between;
+  }
+}
+
+@media screen and (width > 1000px) {
+  /* HEADER */
+  .navigation-drawer {
+    min-height: auto;
+    width: auto;
+    padding: 0;
+    background-color: transparent;
+
+    flex-grow: 1;
+    flex-direction: row;
+    justify-content: space-between;
+
+    position: static;
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

@@ -21,9 +21,8 @@ export default class LoginPresenter {
       }
 
       this.#authModel.putAccessToken(response.loginResult.token);
-     
-      console.log('Token stored in localStorage:', localStorage.getItem('accessToken')); // Debugging
 
+      console.log('Token stored in localStorage:', localStorage.getItem('accessToken')); // Debugging
 
       this.#view.loginSuccessfully(response.message, response.data);
     } catch (error) {

@@ -14,18 +14,15 @@ export function getAccessToken() {
   }
 }
 
-
-
-export function putAccessToken(token){
-try {
-    localStorage.setItem(CONFIG.ACCESS_TOKEN_KEY,token)
-    return true
-} catch (error) {
-    console.log('putAccesToken: error',error.message)
-return false
+export function putAccessToken(token) {
+  try {
+    localStorage.setItem(CONFIG.ACCESS_TOKEN_KEY, token);
+    return true;
+  } catch (error) {
+    console.log('putAccesToken: error', error.message);
+    return false;
+  }
 }
-}
-
 
 const unauthenticatedRoutesOnly = ['/login', '/register'];
 

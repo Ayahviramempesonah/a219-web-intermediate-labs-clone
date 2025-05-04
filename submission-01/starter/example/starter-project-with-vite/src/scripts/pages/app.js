@@ -1,5 +1,5 @@
 import routes from '../routes/routes';
-import { getActiveRoute } from '../routes/url-parser';
+import { getActiveRoute, getActivePathname } from '../routes/url-parser';
 
 class App {
   #content = null;
@@ -37,11 +37,42 @@ class App {
 
   async renderPage() {
     const url = getActiveRoute();
-    const page = routes[url];
+    const route = routes[url];
+    // get page
+    const page = route();
 
     this.#content.innerHTML = await page.render();
     await page.afterRender();
   }
+
+  // perbaikan renderPage
+  // async renderPage() {
+  //   try {
+  //     // Dapatkan path aktif
+  //     const activePathname = getActivePathname();
+
+  //     // Dapatkan route yang cocok dengan path aktif
+  //     const routeKey = getActiveRoute(activePathname, routes);
+  //     const Page = routes[routeKey];
+
+  //     if (!Page) {
+  //       throw new Error(`No route found for path: '${activePathname}'`);
+  //     }
+
+  //     // Buat instance halaman
+  //     const pageInstance = new Page();
+
+  //     // Render halaman
+  //     this.#content.innerHTML = await pageInstance.render();
+  //     await pageInstance.afterRender();
+  //   } catch (error) {
+  //     console.error('Error rendering page:', error.message);
+  //     this.#content.innerHTML = `<p style="color: red;">${error.message}</p>`;
+  //   }
+  //   console.log('Active route key:', routeKey);
+
+  // }
+
 }
 
 export default App;

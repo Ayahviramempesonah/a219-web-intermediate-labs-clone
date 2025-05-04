@@ -2,7 +2,7 @@ import LoginPresenter from './login-presenter';
 // import * as CityCareAPI from '../../../data/api';
 // import * as AuthModel from '../../../utils/auth';
 import * as STORYAPI from '../../data/api';
-import * as AuthModel from '../../utils/auth'
+import * as AuthModel from '../../utils/auth';
 
 export default class LoginPage {
   #presenter = null;
