@@ -1,14 +1,20 @@
-export default class HomePage {
-  async render() {
-    return `
-      <section class="container">
-        <h1>Home Page</h1>
-        <div>selow</div>
-      </section>
-    `;
-  }
+// import HomePresenter from "./home-presenter";
 
-  async afterRender() {
-    // Do your job here
-  }
+
+export default class HomePage {
+  
+    #presenter = null;
+    #map = null;
+
+async render(){
+  return `
+  <h1>hello world</h1>
+  `
 }
+
+
+
+  
+      }
+  
+

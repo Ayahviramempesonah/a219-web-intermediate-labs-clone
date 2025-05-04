@@ -87,7 +87,7 @@ export default class LoginPage {
     console.log(message);
 
     // Redirect ke halaman lain setelah login berhasil
-    location.hash = '/about';
+    location.hash = '/';
   }
 
   loginFailed(message) {

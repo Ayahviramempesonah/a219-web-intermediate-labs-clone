@@ -1,7 +1,7 @@
 // 
 
-import { BASE_URL,ACCESS_TOKEN_KEY } from "../config";
-
+import { ACCESS_TOKEN_KEY } from "../config";
+import { getActiveRoute } from "../routes/url-parser";
 
 
 export function getAccessToken() {
