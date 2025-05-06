@@ -49,6 +49,7 @@ export default class HomePage {
 
     const html = reports.reduce((accumulator, report) => {
 
+
       if (this.#map) {
         const coordinate = [report.location.latitude, report.location.longitude];
         const markerOptions = { alt: report.title };
@@ -104,4 +105,6 @@ this.#map = await Map.build('#map',{
   hideLoading() {
     document.getElementById('reports-list-loading-container').innerHTML = '';
   }
+
+  
 }

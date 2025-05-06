@@ -114,7 +114,7 @@ export async function fetchStoryById(id) {
       throw new Error('Access token is missing or invalid.');
     }
 
-    const url = `${CONFIG.BASE_URL}/stories/${id}`;
+    const url =  `${CONFIG.BASE_URL}/stories/${id}`;
 
     const fetchResponse = await fetch(url, {
       method: 'GET',
@@ -136,6 +136,49 @@ export async function fetchStoryById(id) {
     };
   } catch (error) {
     console.error('fetchStoryById: error', error.message);
+    throw error;
+  }
+}
+
+
+
+
+
+export async function addNewStory(description, photoFile, lat, lon) {
+  try {
+    const token = getAccessToken();
+    if (!token) {
+      throw new Error('Access token is missing or invalid.');
+    }
+
+    const formData = new FormData();
+    formData.append('description', description);
+    formData.append('photo', photoFile);
+
+    if (lat !== null) formData.append('lat', lat);
+    if (lon !== null) formData.append('lon', lon);
+
+    const response = await fetch(`${CONFIG.BASE_URL}/stories`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || 'Failed to add story.');
+    }
+
+    const json = await response.json();
+    if (json.error) {
+      throw new Error(json.message || 'Failed to add story.');
+    }
+
+    return json;
+  } catch (error) {
+    console.error('addNewStory: error', error.message);
     throw error;
   }
 }

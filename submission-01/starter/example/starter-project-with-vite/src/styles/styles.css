@@ -1,9 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-
-  box-sizing: border-box;
-}
 
 body {
   font-family: 'Arial', sans-serif;
@@ -17,6 +11,32 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
+
+@keyframes full-slide-from-right {
+  from {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes full-slide-to-left {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+::view-transition-old(root) {
+  animation-name: full-slide-to-left;
+  animation-duration: 900ms;
+  animation-timing-function: ease-out;
+}
+
+::view-transition-new(root) {
+  animation-name: full-slide-from-right;
+  animation-duration: 900ms;
+  animation-timing-function: ease-out;
+}
+
+
 
 /* 
 /* Container Styling */
@@ -348,4 +368,56 @@ header {
 
 i.loader-button {
   animation: rotation 1s linear infinite;
+}
+
+
+.add-story-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.add-story-container h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.add-story-container div {
+  margin-bottom: 15px;
+}
+
+.add-story-container label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.add-story-container textarea,
+.add-story-container input[type="file"],
+.add-story-container input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.add-story-container button {
+  padding: 10px 15px;
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-story-container button:hover {
+  background-color: #125abe;
+}
+
+#form-message {
+  margin-top: 15px;
+  font-weight: bold;
 }

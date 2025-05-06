@@ -13,8 +13,8 @@ export default class DetailPage {
   async afterRender() {
     try {
       // Dapatkan ID cerita dari URL
-      const urlParams = new URLSearchParams(window.location.hash.slice(2)); // Mengambil hash tanpa "#/"
-      const storyId = urlParams.get('story');
+      const urlParts = window.location.hash.slice(2).split('/');
+      const storyId = urlParts[1]; // Ambil bagian kedua dari path
 
       if (!storyId) {
         throw new Error('Invalid story ID.');
