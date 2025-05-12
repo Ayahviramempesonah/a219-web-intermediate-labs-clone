@@ -23,10 +23,6 @@
   }
 }
 
-
-
-
-
 @media screen and (width > 600px) {
   form .form-buttons {
     flex-direction: row;

@@ -58,6 +58,7 @@ export async function getMyUserInfo() {
   };
 }
 
+//fungsi untuk get api di home
 export async function fetchStories(params = {}) {
   try {
     // Ambil token dari localStorage
@@ -114,7 +115,7 @@ export async function fetchStoryById(id) {
       throw new Error('Access token is missing or invalid.');
     }
 
-    const url =  `${CONFIG.BASE_URL}/stories/${id}`;
+    const url = `${CONFIG.BASE_URL}/stories/${id}`;
 
     const fetchResponse = await fetch(url, {
       method: 'GET',
@@ -139,10 +140,6 @@ export async function fetchStoryById(id) {
     throw error;
   }
 }
-
-
-
-
 
 export async function addNewStory(description, photoFile, lat, lon) {
   try {

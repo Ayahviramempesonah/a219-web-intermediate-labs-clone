@@ -1,4 +1,4 @@
-import { addNewStory } from "../data/api";
+import { addNewStory } from '../data/api';
 export default class AddStoryPage {
   async render() {
     return `

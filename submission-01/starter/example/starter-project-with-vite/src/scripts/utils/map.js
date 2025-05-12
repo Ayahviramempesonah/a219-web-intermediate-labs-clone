@@ -5,71 +5,69 @@ import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 // import { MAP_SERVICE_API_KEY } from '../config';
 import CONFIG from '../config';
 
-
 export default class Map {
   #zoom = 5;
   #map = null;
 
-//   static async getPlaceNameByCoordinate(latitude, longitude) {
-//     try {
-//       const url = new URL(`https://api.maptiler.com/geocoding/${longitude},${latitude}.json`);
-//       url.searchParams.set('key', MAP_SERVICE_API_KEY);
-//       url.searchParams.set('language', 'id');
-//       url.searchParams.set('limit', '1');
+  //   static async getPlaceNameByCoordinate(latitude, longitude) {
+  //     try {
+  //       const url = new URL(`https://api.maptiler.com/geocoding/${longitude},${latitude}.json`);
+  //       url.searchParams.set('key', MAP_SERVICE_API_KEY);
+  //       url.searchParams.set('language', 'id');
+  //       url.searchParams.set('limit', '1');
 
-//       const response = await fetch(url);
-//       const json = await response.json();
+  //       const response = await fetch(url);
+  //       const json = await response.json();
 
-//       const place = json.features[0].place_name.split(', ');
-//       return [place.at(-2), place.at(-1)].map((name) => name).join(', ');
-//     } catch (error) {
-//       console.error('getPlaceNameByCoordinate: error:', error);
-//       return `${latitude}, ${longitude}`;
-//     }
-//   }
+  //       const place = json.features[0].place_name.split(', ');
+  //       return [place.at(-2), place.at(-1)].map((name) => name).join(', ');
+  //     } catch (error) {
+  //       console.error('getPlaceNameByCoordinate: error:', error);
+  //       return `${latitude}, ${longitude}`;
+  //     }
+  //   }
 
-
-/**
- * Mengambil nama tempat berdasarkan koordinat menggunakan reverse geocoding.
- * @param {number} latitude - Latitude lokasi.
- * @param {number} longitude - Longitude lokasi.
- * @returns {Promise<string>} Nama tempat atau koordinat jika gagal.
- */
-static async getPlaceNameByCoordinate(latitude, longitude) {
+  /**
+   * Mengambil nama tempat berdasarkan koordinat menggunakan reverse geocoding.
+   * @param {number} latitude - Latitude lokasi.
+   * @param {number} longitude - Longitude lokasi.
+   * @returns {Promise<string>} Nama tempat atau koordinat jika gagal.
+   */
+  static async getPlaceNameByCoordinate(latitude, longitude) {
     // Validasi input
     if (typeof latitude !== 'number' || typeof longitude !== 'number') {
       throw new Error('Latitude and longitude must be numbers');
     }
-  
+
     try {
       // Membuat URL API
       const url = new URL(`https://api.maptiler.com/geocoding/${longitude},${latitude}.json`);
       url.searchParams.set('key', CONFIG.MAP_SERVICE_API_KEY);
       url.searchParams.set('language', 'id');
       url.searchParams.set('limit', '1');
-  
+
       // Mengirim permintaan ke API
       const response = await fetch(url);
-  
+
       // Memeriksa apakah respons berhasil
       if (!response.ok) {
         throw new Error(`API request failed with status: ${response.status}`);
       }
-  
+
       // Parsing respons JSON
       const json = await response.json();
-  
+
       // Memastikan data features tersedia
       if (!Array.isArray(json.features) || json.features.length === 0) {
         throw new Error('No features found in the API response');
       }
-  
+
       // Mengambil nama tempat
       const placeName = json.features[0].place_name;
       if (!placeName) {
         throw new Error('Place name not available in the API response');
       }
-  
+
       // Memecah nama tempat menjadi komponen-komponennya
       const placeParts = placeName.split(', ');
       return [placeParts.at(-2), placeParts.at(-1)].join(', ');
@@ -78,14 +76,6 @@ static async getPlaceNameByCoordinate(latitude, longitude) {
       return `${latitude}, ${longitude}`;
     }
   }
-
-
-
-
-
-
-
-
 
   static isGeolocationAvailable() {
     return 'geolocation' in navigator;
@@ -215,9 +205,3 @@ static async getPlaceNameByCoordinate(latitude, longitude) {
     this.#map.addEventListener(eventName, callback);
   }
 }
-
-
-
-
-
-

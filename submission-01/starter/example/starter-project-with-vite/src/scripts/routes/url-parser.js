@@ -85,7 +85,6 @@
 //   return '/';
 // }
 
-
 // reset
 function extractPathnameSegments(path) {
   const splitUrl = path.split('/');

@@ -6,18 +6,16 @@ import { checkAuthenticatedRoute, checkUnauthenticatedRouteOnly } from '../utils
 import DetailPage from '../pages/detail/detail-pages';
 import AddStoryPage from '../new/new-pages';
 
-
 const routes = {
   '/': () => checkAuthenticatedRoute(new HomePage()),
   '/about': () => checkAuthenticatedRoute(new AboutPage()),
   '/register': () => checkUnauthenticatedRouteOnly(new RegisterPage()),
   '/login': () => checkUnauthenticatedRouteOnly(new LoginPage()),
   '/stories/:id': () => checkAuthenticatedRoute(new DetailPage()),
-'/stories': () => checkAuthenticatedRoute(new AddStoryPage())
+  '/stories': () => checkAuthenticatedRoute(new AddStoryPage()),
 };
 
-
-console.log('Routes:', routes);
+console.log(`coba ${Object.keys(routes).join(',')}`);
 // console.log('Active route key:', routeKey);
 // console.log('Page:', Page);
 

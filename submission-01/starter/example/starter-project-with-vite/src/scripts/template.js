@@ -1,7 +1,13 @@
-
-
-export function generateItemDetailTemplate({ id, name, description, photoUrl, createdAt, lat, lon }) {
-    return `
+export function generateItemDetailTemplate({
+  id,
+  name,
+  description,
+  photoUrl,
+  createdAt,
+  lat,
+  lon,
+}) {
+  return `
       <div class="item-detail" data-id="${id}">
         <img src="${photoUrl}" alt="${name}" class="item-image">
         <div class="item-content">
@@ -16,24 +22,19 @@ export function generateItemDetailTemplate({ id, name, description, photoUrl, cr
         </div>
       </div>
     `;
-  }
+}
 
+export function showFormattedDate(date, locale = 'en-US', options = {}) {
+  return new Date(date).toLocaleDateString(locale, {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    ...options,
+  });
+}
 
-  export function showFormattedDate(date, locale = 'en-US', options = {}) {
-    return new Date(date).toLocaleDateString(locale, {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      ...options,
-    });
-  }
-
-  
-
-  
-
-  export function generateItemTemplate({ id, name, description, photoUrl, createdAt, lat, lon }) {
-    return `
+export function generateItemTemplate({ id, name, description, photoUrl, createdAt, lat, lon }) {
+  return `
       <div class="item" data-id="${id}">
         <img src="${photoUrl}" alt="${name}" class="item-image">
         <div class="item-content">
@@ -48,5 +49,4 @@ export function generateItemDetailTemplate({ id, name, description, photoUrl, cr
         </div>
       </div>
     `;
-  }
- 
+}

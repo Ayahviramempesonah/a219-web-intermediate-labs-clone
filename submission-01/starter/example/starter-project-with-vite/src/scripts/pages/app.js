@@ -72,7 +72,6 @@ class App {
   //   console.log('Active route key:', routeKey);
 
   // }
-
 }
 
 export default App;
