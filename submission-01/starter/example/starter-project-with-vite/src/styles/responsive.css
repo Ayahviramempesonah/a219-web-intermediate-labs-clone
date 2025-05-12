@@ -85,3 +85,36 @@
     opacity: 1;
   }
 }
+
+
+/* Media query untuk perangkat sangat kecil */
+@media (max-width: 320px) {
+  .story-list {
+    grid-template-columns: 1fr; /* Satu kolom di perangkat kecil */
+    gap: 15px;
+    padding: 5px;
+  }
+}
+
+
+
+/* Tablet */
+@media (min-width: 600px) {
+  .story-item {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop kecil */
+@media (min-width: 900px) {
+  .story-item {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Desktop besar */
+@media (min-width: 1200px) {
+  .story-item {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+} 

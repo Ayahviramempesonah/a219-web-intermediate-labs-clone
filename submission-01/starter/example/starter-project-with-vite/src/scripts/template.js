@@ -50,3 +50,26 @@ export function generateItemTemplate({ id, name, description, photoUrl, createdA
       </div>
     `;
 }
+
+
+
+//fungsi untuk grid get stories
+export function generateItemStories({photoUrl,name,description,createdAt,id,lat,lon}){
+
+
+return `
+
+<div  class="story-item" >
+<img src="${photoUrl}" alt="${name}"   >
+
+<h3 >${name}</h3>
+<p>${description}</p>
+<p>${lat && lon ? `${lat}, ${lon}` : 'No location available'}</p>
+<p> <small>${new Date(createdAt).toLocaleString() }</small> </p>
+<button class="detail-button" data-id="${id}" >Detail</button>
+</div>
+
+
+`
+
+}

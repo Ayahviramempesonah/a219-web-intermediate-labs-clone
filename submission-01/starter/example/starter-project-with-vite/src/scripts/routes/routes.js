@@ -15,8 +15,5 @@ const routes = {
   '/stories': () => checkAuthenticatedRoute(new AddStoryPage()),
 };
 
-console.log(`coba ${Object.keys(routes).join(',')}`);
-// console.log('Active route key:', routeKey);
-// console.log('Page:', Page);
 
 export default routes;
