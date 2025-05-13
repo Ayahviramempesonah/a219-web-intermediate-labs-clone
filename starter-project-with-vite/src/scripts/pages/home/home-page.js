@@ -3,8 +3,10 @@ export default class HomePage {
     return `
       <section class="container">
         <h1>Home Page</h1>
-        <div>selow
-        <i class="fas fa-home"></i> 
+        <div >
+        <h2>
+       <i class="fas fa-home"> </i>   welcome</h2>
+    
         </div>
       </section>
     `;
