@@ -30,7 +30,8 @@ export default class HomePage {
     });
 
     try {
-      await this.#presenter.initialGalleryAndMap();
+      const galler = await this.#presenter.initialGalleryAndMap();
+      console.log('galler',galler)
     } catch (error) {
       console.error('Error during initialization:', error.message);
 
@@ -50,6 +51,7 @@ export default class HomePage {
     const html = reports.reduce((accumulator, report) => {
       if (this.#map) {
         const coordinate = [report.lat, report.lon];
+        console.log('coordinat',coordinate)
         const markerOptions = { alt: report.name };
         const popupOptions = { content: report.description };
         this.#map.addMarker(coordinate, markerOptions, popupOptions);
@@ -82,10 +84,19 @@ export default class HomePage {
   }
 
   async initialMap() {
-    this.#map = await Map.build('map', {
+    //cek map id
+     const mapElement = document.getElementById('map');
+    if (!mapElement) {
+      console.error('Map container element with ID "map" not found in the DOM.');
+      return;
+    }
+
+
+   const mark = this.#map = await Map.build('#map', {
       zoom: 10,
       locate: true,
     });
+    console.log(' ini map',mark)
   }
 
   showLoading() {

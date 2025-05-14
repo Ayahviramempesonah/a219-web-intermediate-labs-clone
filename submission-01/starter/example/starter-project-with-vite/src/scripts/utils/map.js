@@ -9,24 +9,7 @@ export default class Map {
   #zoom = 5;
   #map = null;
 
-  //   static async getPlaceNameByCoordinate(latitude, longitude) {
-  //     try {
-  //       const url = new URL(`https://api.maptiler.com/geocoding/${longitude},${latitude}.json`);
-  //       url.searchParams.set('key', MAP_SERVICE_API_KEY);
-  //       url.searchParams.set('language', 'id');
-  //       url.searchParams.set('limit', '1');
-
-  //       const response = await fetch(url);
-  //       const json = await response.json();
-
-  //       const place = json.features[0].place_name.split(', ');
-  //       return [place.at(-2), place.at(-1)].map((name) => name).join(', ');
-  //     } catch (error) {
-  //       console.error('getPlaceNameByCoordinate: error:', error);
-  //       return `${latitude}, ${longitude}`;
-  //     }
-  //   }
-
+ 
   /**
    * Mengambil nama tempat berdasarkan koordinat menggunakan reverse geocoding.
    * @param {number} latitude - Latitude lokasi.
@@ -45,9 +28,12 @@ export default class Map {
       url.searchParams.set('key', CONFIG.MAP_SERVICE_API_KEY);
       url.searchParams.set('language', 'id');
       url.searchParams.set('limit', '1');
+      console.log('url',url)
 
       // Mengirim permintaan ke API
       const response = await fetch(url);
+console.log('response json',response)
+
 
       // Memeriksa apakah respons berhasil
       if (!response.ok) {
@@ -56,6 +42,7 @@ export default class Map {
 
       // Parsing respons JSON
       const json = await response.json();
+      console.log('json',json)
 
       // Memastikan data features tersedia
       if (!Array.isArray(json.features) || json.features.length === 0) {
@@ -107,8 +94,9 @@ export default class Map {
     if ('locate' in options && options.locate) {
       try {
         const position = await Map.getCurrentPosition();
+        console.log('position',position)
         const coordinate = [position.coords.latitude, position.coords.longitude];
-
+        console.log('coordinate',coordinate)
         return new Map(selector, {
           ...options,
           center: coordinate,

@@ -12,7 +12,8 @@ export default class HomePresenter {
 
   async showReportsListMap() {
     try {
-      await this.#view.initialMap();
+        await this.#view.initialMap();
+        
     } catch (error) {
       console.error('showReportsListMap: error:', error);
     }
@@ -24,9 +25,13 @@ export default class HomePresenter {
     try {
       // Ambil data cerita dari model
       const response = await this.#model.fetchStories({ page: 1, size: 10, location: 0 });
-  
+
+       const tg = await this.showReportsListMap()
+      console.log('tg',tg)
+
       // Kirim data cerita ke view untuk dirender
-      this.#view.storyList(response.listStory);
+    const story =  this.#view.storyList(response.listStory);
+      console.log('storylist',story)
     } catch (error) {
       console.error('initialGalleryAndMap: error:', error);
       this.#view.populateReportsListError(error.message || 'An error occurred.');
